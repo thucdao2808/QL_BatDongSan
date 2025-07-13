@@ -1,0 +1,11 @@
+﻿.imgSys{
+    width:20px;
+    height:20px;
+    object-fit:cover;
+    background-color:transparent;
+    border:1px solid black;
+}
+.DetailItemMenuBar {
+    text-decoration: none;
+    list-style: none;
+}

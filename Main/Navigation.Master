@@ -1,0 +1,153 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Navigation.master.cs" Inherits="Main.Navigation" %>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Phần mềm quản lí bất động sản</title>
+    <link rel="stylesheet" href="Contents/Nagivation.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        /* Tổng container chia 2 phần ngang */
+        .layoutContainer {
+            display: flex;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Menu bên trái - 2 phần */
+        .pnlMenu {
+            flex: 2;
+            background-color: #2c3e50;
+            color: white;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        /* Nội dung bên phải - 8 phần */
+        .pnlContent {
+            flex: 8;
+            padding: 30px;
+            background-color: #f4f6f8;
+            overflow-y: auto;
+        }
+
+        /* Danh sách menu */
+        .itemMenuBar {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .DetailItemMenuBar {
+            padding: 12px 16px;
+            background-color: #34495e;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+            .DetailItemMenuBar:hover {
+                background-color: #1abc9c;
+            }
+
+        /* Hình ảnh logo/menu */
+        .imgSys {
+            width: 30px;
+            height: 30px;
+            border-style: none;
+        }
+
+        /* Hyperlink trong menu */
+        .DetailItemMenuBar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Responsive: ẩn menu trái trên màn hình nhỏ */
+        @media (max-width: 768px) {
+            .layoutContainer {
+                flex-direction: column;
+            }
+
+            .pnlMenu {
+                flex: none;
+                width: 100%;
+            }
+
+            .pnlContent {
+                flex: none;
+                width: 100%;
+            }
+        }
+
+        .homePage {
+            padding-left: 10px;
+            font-size: 30px;
+        }
+        .iconMenu{
+            width:30px;
+                        height: 30px;
+           object-fit:cover;
+           padding-right:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parentPage">
+        <div class="layoutContainer">
+            <aside class="pnlMenu">
+                <nav class="Menubar">
+                    <ul class="itemMenuBar">
+                        <li class="DetailItemMenuBar">
+                            <img src="Resource/trangchu.png" class="iconMenu" />
+                            <span class="homePage">Trang Chủ</span>
+                        </li>
+                        <li class="DetailItemMenuBar">
+                            <img src="Resource/bds.png" class="iconMenu" />
+                            <asp:HyperLink ID="formBatDongSan" runat="server" NavigateUrl="~/FormBDS.aspx">Bất động sản</asp:HyperLink>
+                        </li>
+                        <li class="DetailItemMenuBar">
+                            <img src="Resource/2key.png" class="iconMenu" />
+                            <asp:HyperLink ID="formChuSoHuu" NavigateUrl="~/FormChuSoHuu.aspx" runat="server">Chủ Sở Hữu</asp:HyperLink>
+                        </li>
+                        <li class="DetailItemMenuBar">
+                            <img src="Resource/usergroup.png" class="iconMenu" />
+                            <asp:HyperLink ID="formKh" runat="server" NavigateUrl="~/FormKhachHang.aspx">Thông tin Khách Hàng</asp:HyperLink>
+                        </li>
+                        <li class="DetailItemMenuBar">
+                            <img src="Resource/handcomm.png" class="iconMenu" />
+                            <asp:HyperLink ID="FormGiaoDich" runat="server" NavigateUrl="~/FormGiaoDich.aspx">Thông tin Giao Dịch</asp:HyperLink>
+                        </li>
+                        <li class="DetailItemMenuBar">
+                            <img src="Resource/cancuoc.png" class="iconMenu" />
+                            <asp:HyperLink ID="formNV" runat="server" NavigateUrl="~/FormNhanVien.aspx">Thông tin Nhân Viên</asp:HyperLink>
+                        </li>  
+                        <li class="DetailItemMenuBar">
+                            <img src="Resource/barchart.png" class="iconMenu" />
+                            <asp:HyperLink ID="formThongKe" runat="server" NavigateUrl="~/FormThongKe.aspx"  >Thống Kê</asp:HyperLink>
+                        </li>  
+                        <li class="DetailItemMenuBar">
+                            <img src="Resource/barchart.png" class="iconMenu" />
+                            <asp:HyperLink ID="formReport" runat="server" NavigateUrl="~/ReportServer/ReportingServer.aspx">Reporting Service</asp:HyperLink>
+                        </li>
+                        <li class="DetailItemMenuBar">
+                            <img src="Resource/nextpng.png" class="iconMenu" />
+                            <asp:HyperLink ID="formLogout" runat="server" NavigateUrl="~/LoginForm.aspx">Đăng Xuất</asp:HyperLink>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+
+            <main class="pnlContent">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </main>
+        </div>
+    </div>
+
+
+</body>
+</html>

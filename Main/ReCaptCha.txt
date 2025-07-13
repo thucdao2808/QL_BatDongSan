@@ -1,0 +1,208 @@
+﻿<asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
+
+ <div class="captcha">
+     <div class="g-recaptcha" data-sitekey="6LcZgkUrAAAAAG43Ngo0LL1nWaQgBP2nOJdatnKj"></div>
+ </div>
+
+
+ 
+            var response = Request["g-recaptcha-response"];
+            string secretKey = "6LcZgkUrAAAAAChL5Ksx5UZ6paZdDYliVS0CBDhb";
+            var client = new WebClient();
+            var result = client.DownloadString($"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={response}");
+
+            var js = new JavaScriptSerializer();
+            var data = js.Deserialize<GoogleCaptchaResponse>(result);
+
+            if (data.success)
+            {
+                // Tiến hành đăng nhập
+                lblMessage.Text = "CAPTCHA hợp lệ, tiến hành xác thực tài khoản.";
+            }
+            else
+            {
+                lblMessage.Text = "Vui lòng xác minh CAPTCHA trước khi đăng nhập.";
+            }
+
+             public class GoogleCaptchaResponse
+        {
+            public bool success { get; set; }
+            public string challenge_ts { get; set; }
+            public string hostname { get; set; }
+
+
+
+
+ <style>
+            .imgExport {
+                width: 30px;
+                height: 30px;
+            }
+
+            .boxbtn {
+                display: flex;
+            }
+
+            .itemBtn {
+                width: 30px;
+                height: 30px;
+            }
+
+            .grvForm td, .grvForm th {
+                text-align: center;
+                border: 2px solid black;
+                padding: 5px;
+            }
+
+            .grvForm th {
+                background-color: #f0f8ff;
+                color: #000;
+            }
+
+            .grvForm .checkbox-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .grvForm .checkbox-container input[type="checkbox"] {
+                    appearance: none;
+                    width: 20px;
+                    height: 20px;
+                    border: 1px solid #007bff;
+                    border-radius: 4px;
+                    background-color: #fff;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                    .grvForm .checkbox-container input[type="checkbox"]:checked {
+                        background-color: #007bff;
+                        border-color: #0056b3;
+                    }
+
+                        .grvForm .checkbox-container input[type="checkbox"]:checked::after {
+                            content: "✔";
+                            color: #fff;
+                            font-size: 14px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            animation: checkboxCheckedAnimation 0.3s ease-in-out;
+                        }
+
+            @keyframes checkboxCheckedAnimation {
+                0% {
+                    transform: scale(0.8);
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+
+            .BorderGreen {
+                border: 2px solid #00ff21;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .BorderYellow {
+                border: 2px solid #0094ff;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .BorderOrange {
+                border: 2px solid #ff6a00;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .form-container-Them {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+                background-color: #ffffff;
+                padding: 30px 40px;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                width: 600px;
+                max-width: 95vw;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+                .form-container-Them h3 {
+                    text-align: center;
+                    font-size: 22px;
+                    margin-bottom: 20px;
+                    color: #333;
+                }
+
+            /* Grid 2 cột */
+            .form-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            /* Label và input trong cột */
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 10px;
+            }
+
+                .form-group label {
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                    color: #555;
+                }
+
+                .form-group .form-control {
+                    padding: 8px 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    font-size: 14px;
+                }
+
+            /* Button căn giữa */
+            .form-actions {
+                margin-top: 25px;
+                text-align: center;
+            }
+
+                .form-actions .btn {
+                    padding: 10px 30px;
+                    font-size: 16px;
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    transition: background-color 0.3s ease;
+                }
+
+                    .form-actions .btn:hover {
+                        background-color: #0056b3;
+                        cursor: pointer;
+                    }
+
+            .btnBack {
+                width: 20px;
+                height: 20px;
+                display: flex;
+                justify-content: flex-end;
+            }
+        </style>        }
+
+                            <h3>Tổng doanh thu:</h3>
+                    <asp:Label ID="lblTongDoanhThu" runat="server" Font-Bold="true" ForeColor="Green" />
+
+                    <h3>BĐS chưa bán:</h3>
+                    <asp:GridView ID="gvBDSChuaBan" runat="server" AutoGenerateColumns="true" />
+
+                    <h3>Giao dịch theo loại BĐS:</h3>
