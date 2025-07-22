@@ -357,6 +357,7 @@
       <DependentUpon>SignInForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="test.cs" />
     <Compile Include="WebControl\NotificationControl.ascx.cs">
       <DependentUpon>NotificationControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
